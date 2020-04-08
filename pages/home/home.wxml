@@ -1,0 +1,30 @@
+<!-- pages/home/home.wxml -->
+<view class="home">
+  <!-- 1、商品搜索 -->
+  <w-good-search />
+
+  <!-- 2、轮播图 -->
+  <w-swiper imageList="{{imageList}}" />
+
+  <scroll-view class='content' 
+              scroll-y 
+              bindscrolltolower="loadMore"
+              scroll-with-animation="true"
+              scroll-top="{{topPosition}}"
+              bindscroll="scrollPosition">  
+
+  <!-- 3、产品 -->
+  <w-good-choose recommandList="{{recommandList}}" />
+
+  <!-- 4、热销 推荐 优惠 -->
+  <view class="good">
+    <!-- 4-1、title -->
+    <w-tab-control class='tab-control' titles="{{good_title}}" bind:tabclick="tabClick"/>
+    <!-- 4-2、商品细节 detail  -->
+    <w-goods subDetails="{{goods[currentType].list}}" />
+  </view>
+
+  <!-- 5、回到顶部 -->
+  <w-back-top wx:if="{{showBackTop}}" bind:tap="handleBackTop" />
+</scroll-view>
+</view>

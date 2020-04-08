@@ -1,0 +1,5 @@
+/* components/w-swiper/w-swiper.wxss */
+/* 轮播图 */
+.swiper-item image{
+    width: 100%;
+  }

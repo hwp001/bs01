@@ -1,0 +1,11 @@
+<!-- pages/category/category.wxml -->
+<view class="category">
+    <w-menu class="w-menu" categories="{{categories}}" />
+    <!-- 2、子类别显示 -->
+    <view class="w-content">
+        <!-- 2-1、子类别控件 -->
+        <w-content subcategories="{{subcategories}}" />
+        <!-- 2-2、子类别详细数据 -->
+        <w-goods subDetails="{{subDetails}}" />
+    </view>
+</view>

@@ -1,0 +1,13 @@
+/* components/w-good-search/w-good-search.wxss */
+@import "/assets/weui/weui.wxss";
+.searchbar-result{
+    margin-top: 0;
+    font-size: 28rpx;
+}
+.searchbar-rersult .weui-cell__bd{
+  padding: 4rpx 0 4rpx 40rpx;
+  color: #666;
+}
+.searchbar-result:before{
+    display: none;
+}

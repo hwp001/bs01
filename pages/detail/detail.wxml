@@ -1,0 +1,19 @@
+<!-- pages/detail/detail.wxml -->
+<scroll-view class="detail" scroll-y>
+    <!-- 轮播图 -->
+    <w-swiper imageList="{{topImages}}" />
+    <!-- 推荐数据 -->
+    <w-base-info baseInfo="{{baseInfo}}" />
+    <!-- 商品数据 -->
+    <w-show-info shopInfo="{{shopInfo}}" />
+    <!-- 商品细节 -->
+    <w-detail-info detailInfo="{{detailInfo}}" />
+    <!-- 商品尺寸 -->
+    <w-param-info paramInfo="{{paramInfo}}" />
+    <!-- 用户评论 -->
+    <w-comment-info commentInfo="{{commentInfo}}" />
+    <!-- 用户推荐 -->
+    <w-recommend-info recommends="{{recommends}}" />
+</scroll-view>
+<!-- 加入购物车 -->
+<w-bottom-bar bind:addcart="onAddCart" bind:onSwitchTab="onSwitchTab" />

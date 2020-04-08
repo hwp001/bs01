@@ -1,0 +1,9 @@
+<!--components/w-good-choose/w-good-choose.wxml-->
+  <view class="recommand">
+    <block wx:for="{{recommandList}}" wx:key="{{index}}">
+      <view class="reco_main">
+        <image src="{{item.ImgUrl}}" />
+        <view>{{item.title}}</view>
+      </view>
+    </block>
+  </view>

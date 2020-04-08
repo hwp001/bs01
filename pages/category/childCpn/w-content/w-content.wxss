@@ -1,0 +1,18 @@
+/* pages/category/childCpn/w-content/w-content.wxss */
+.subcategory{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20rpx;
+    margin-top: 30rpx;
+}
+.subcategory .item{
+    width: 33.3%;
+    text-align: center;
+}
+.subcategory .item image{
+    width: 80%;
+}
+.subcategory .item view{
+    font-size: 28rpx;
+    margin: 30rpx 0;
+}

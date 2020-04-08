@@ -1,0 +1,12 @@
+/* pages/detail/detail.wxss */
+.detail {
+    position: relative;
+    height: calc(100% - 120rpx);
+  }
+  
+  .d-swiper swiper {
+    height: 800rpx;
+  }
+  
+
+  
