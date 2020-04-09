@@ -1,0 +1,6 @@
+<!--pages/category/childCpn/w-menu-child/w-menu-child.wxml-->
+ <block wx:for="{{childCategories}}" wx:key="{{index}}">
+            <view class="item {{currentIndex == index ? 'active' : ''}}" data-id="{{item.id}}" data-index="{{index}}"  bind:tap="childItemClick">
+              {{item.name}}
+            </view>
+ </block>

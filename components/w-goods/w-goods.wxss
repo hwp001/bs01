@@ -3,13 +3,16 @@
 .good_detail{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 8rpx;
   }
   
   .good_detail > .item{
     width: 48%;
     position: relative;
-    margin-top: 16rpx;
+    /* margin-top: 16rpx; */
   }
   
+  .item:not(:nth-child(4n)) {
+    margin-right: calc(4% / 3);
+}

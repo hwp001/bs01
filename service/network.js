@@ -11,6 +11,7 @@ function request(options)
   return new Promise((resolve,reject) => {
       wx.request({
         url: baseURL + options.url,
+        method: options.method | 'get',
         timeout: timeout,
         data: options.data,
         success: function(res) {

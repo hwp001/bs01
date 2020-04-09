@@ -1,0 +1,14 @@
+/* pages/category/childCpn/w-menu-child/w-menu-child.wxss */
+.item{
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    background-color: #fff;
+    border-left: 6rpx solid #696969;
+}
+.active{
+    color: #696969;
+    font-weight: 700;
+    background: #fff;
+    
+}

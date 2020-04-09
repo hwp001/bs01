@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "w-menu-child" : "../../w-menu-child/w-menu-child"
+  }
 }
