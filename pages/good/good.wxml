@@ -1,0 +1,45 @@
+<!--pages/good/good.wxml-->
+<scroll-view class="good" scroll-y>
+  <!-- 1、商品图片 -->
+  <w-swiper imageList="{{topImages}}" />
+  <!-- 2、商品标题信息 -->
+    <view class="baseInfo">
+        <view class="title">{{ baseInfo.title }}</view>
+        <view class="price">¥ {{ baseInfo.price }}</view> 
+        <text class="desc">{{ baseInfo.desc }}</text>
+    </view>
+  <!-- 3、商品评论 -->
+  <view class='comment-info'>
+  <view class='header'>
+    <view>用户评价</view>
+    <view>更多 >></view>
+  </view>
+  <view class='user'>
+    <image src="{{commentInfo.avatar}}"/>
+    <text>{{commentInfo.username}}</text>
+  </view>
+  <view class='comment'>
+    商品评价：{{commentInfo.description}}
+  </view>
+  <view class='other-info'>
+    <view class='style'>商品评分：{{commentInfo.star}}星</view>
+    <view class='time'>评论时间：{{commentInfo.time}} </view>
+  </view>
+  <view class='picture'>
+    <block wx:for="{{commentInfo.img}}" 
+           wx:key="index">
+      <image src="{{item}}" mode="widthFix"/>
+    </block>
+  </view>
+</view>
+<!-- 4、商品推荐 -->
+<view class='recommend'>
+    <view class='header'>商品推荐</view>
+    <view class='content'>
+        <w-goods subDetails="{{recommends}}" />
+    </view>
+</view>
+</scroll-view>
+
+<!-- 加入购物车 -->
+<w-bottom-bar bind:addcart="onAddCart" bind:onSwitchTab="onSwitchTab" />

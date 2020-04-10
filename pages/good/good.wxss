@@ -1,0 +1,103 @@
+/* pages/good/good.wxss */
+.good {
+  height: calc(100% - 120rpx);
+}
+
+.d-swiper swiper {
+  height: 800rpx;
+}
+
+/* 商品标题 */
+.baseInfo {
+    padding: 0 30rpx;
+    border-bottom: 12rpx solid #f2f2f2;
+}
+
+.baseInfo .title {
+    margin: 10px 0;
+    font-weight: bold;
+    color: #333;
+}
+
+.baseInfo .price {
+    margin: 10px 0;
+    font-weight: normal;
+    color: orangered;
+}
+
+.baseInfo .desc {
+    margin: 10px 0;
+    color: #939393;
+    line-height: 22px;
+}
+  
+/* 商品评论 */
+.comment-info {
+    padding: 50rpx 30rpx;
+    border-bottom: 12rpx solid #f2f2f2;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30rpx;
+    font-size: 32rpx;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .user {
+    margin: 30rpx 0;
+  }
+  
+  .user image {
+    width: 84rpx;
+    height: 84rpx;
+    vertical-align: middle;
+    border-radius: 42rpx;
+  } 
+  
+  .user text {
+    vertical-align: middle;
+    margin-left: 16rpx;
+    font-size: 32rpx;
+    color: #666;
+  }
+  
+  .comment {
+    font-size: 28rpx;
+    /* text-indent: 1.5em; */
+    line-height: 1.5;
+  }
+  
+  .other-info {
+    /* display: flex; */
+    font-size: 28rpx;
+    color: #888;
+  }
+  
+  .other-info .time {
+    margin-right: 10rpx;
+  }
+    .other-info .style {
+    color: 	#FF4500;
+  }
+
+  .picture {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20rpx;
+  }
+  
+  .picture image {
+    max-width: 30%;
+  }
+  
+  /* 商品推荐 */
+  .recommend {
+    padding: 10rpx 0;
+  }
+  
+  .header {
+    font-size: 40rpx;
+    margin: 10rpx;
+  }

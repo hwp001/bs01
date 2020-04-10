@@ -21,6 +21,14 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    itemClick(e){
+      console.log(this.data)
+      //1、获取商品id
+      const goodId = this.data.goodsItem.id
+      //2、跳转到对应的路径
+      wx.navigateTo({
+        url: '/pages/good/good?goodId=' + goodId,
+      })
+    }
   }
 })

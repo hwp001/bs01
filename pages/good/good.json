@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "w-swiper": "/components/w-swiper/w-swiper",
+    "w-goods": "/components/w-goods/w-goods",
+    "w-bottom-bar": "./childCpn/w-bottom-bar/w-bottom-bar"
+  }
+}
