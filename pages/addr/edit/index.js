@@ -44,7 +44,8 @@ Page({
           cargo: cargo[0],
           switch2Checked: cargo[0].sort,
           radioItems:radioItems,
-          id:id
+          id:id,
+          address:cargo[0].address
         })
       } else {
         wx.showToast({

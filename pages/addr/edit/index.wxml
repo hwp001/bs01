@@ -49,7 +49,7 @@
             <view class="weui-cells weui-cells_after-title">
                 <view class="weui-cell">
                     <view class="weui-cell__bd">
-                        <textarea name="address" class="weui-textarea" value="{{address}}" placeholder="请输入详细地址" style="height: 3.3em"  required value="{{cargo.address}}" />
+                        <textarea name="address" class="weui-textarea" value="{{address}}" placeholder="请输入详细地址" style="height: 3.3em" />
                     </view>
                 </view>
             </view>
