@@ -1,8 +1,31 @@
 /* pages/addr/list/index.wxss */
+.list{
+  margin-bottom: 150rpx;
+}
 .radio{
-  float: left;
-  background-size: 100%;
+  margin-left: 80rpx;
 }
 .bottom{
-  margin-top: 5rpx;
+  border-bottom: 10rpx solid rgba(196, 196, 181, 0.164);
+  margin-bottom: 20rpx;
+}
+.btn-view {
+  width: 100%;
+  padding: 20rpx 0;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.btn {
+  width: 90%;
+}
+.active{
+  color: red
+}
+.edit{
+  color:#808000
+}
+.del{
+  color:red
 }

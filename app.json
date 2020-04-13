@@ -12,7 +12,8 @@
     "pages/profile/profile",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/addr/list/index"
+    "pages/addr/list/index",
+    "pages/addr/edit/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

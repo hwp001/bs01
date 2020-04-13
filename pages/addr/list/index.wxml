@@ -1,19 +1,27 @@
 <view class="list">
+  <view class="weui-panel__hd">快递地址</view>
   <scroll-view scroll-y>
-    <view class="weui-panel">
-      <view class="weui-panel__hd">快递地址</view>
-      <radio-group>
-        <view class="weui-panel__bd ">
-          <view class="weui-media-box weui-media-box_text">
-            <radio class="radio"></radio>
-            <view class="weui-media-box__title weui-media-box__title_in-text bottom">标题一</view>
-            <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
-            <view class="weui-media-box__info">
-              <view class="weui-media-box__info__meta">设为默认</view>
+  <radio-group bind:change="itemChange">
+    <radio class="radio" wx:for-items="{{cargo}}" wx:key="{{index}}": value="{{item.id}}" checked="{{item.sort}}"> 
+      <view class="weui-panel">
+          <view class="weui-panel__bd ">
+            <view class="weui-media-box weui-media-box_tCext">
+              <view class="weui-media-box__title weui-media-box__title_in-text ">
+                {{item.name + "  " + item.sex + "  " + item.phone}}
+              </view>
+              <view class="weui-media-box__desc">{{item.address}}</view>
+              <view class="weui-media-box__info">
+                <view class="weui-media-box__info__meta edit" bind:tap="editItem" data-id="{{item.id}}">编辑</view>
+                <view class="weui-media-box__info__meta del">删除</view>
+              </view>
             </view>
           </view>
-        </view>
-      </radio-group>
-    </view>
+      </view>
+       </radio>
+  </radio-group>
   </scroll-view>
+</view>
+
+  <view class='btn-view'>
+    <button class='btn' bind:tap="addItem">新增地址</button>
 </view>
