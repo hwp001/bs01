@@ -1,0 +1,23 @@
+  <view class='comment-info'>
+  <view class='header'>
+    <view>用户评价</view>
+    <view>更多 >></view>
+  </view>
+  <view class='user'>
+    <image src="{{commentInfo.avatar}}"/>
+    <text>{{commentInfo.username}}</text>
+  </view>
+  <view class='comment'>
+    商品评价：{{commentInfo.description}}
+  </view>
+  <view class='other-info'>
+    <view class='style'>商品评分：{{commentInfo.star}}星</view>
+    <view class='time'>评论时间：{{commentInfo.time}} </view>
+  </view>
+  <view class='picture'>
+    <block wx:for="{{commentInfo.img}}" 
+           wx:key="index">
+      <image src="{{item}}" mode="widthFix"/>
+    </block>
+  </view>
+</view>

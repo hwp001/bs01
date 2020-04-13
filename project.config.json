@@ -93,6 +93,35 @@
 					"id": -1,
 					"name": "profile",
 					"pathName": "pages/profile/profile",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "address/list",
+					"pathName": "pages/address/list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "pages/addr/add/index",
+					"pathName": "pages/addr/add/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/addr/list/index",
+					"pathName": "pages/addr/list/index",
+					"query": "",
 					"scene": null
 				}
 			]

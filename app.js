@@ -47,7 +47,6 @@ App({
 
 
   globalData: {
-    headUrl: 'http://bs01.test/upload/',
     userInfo: null,
     cartList: []
   },

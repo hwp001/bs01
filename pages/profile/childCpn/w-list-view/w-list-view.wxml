@@ -1,7 +1,7 @@
 <!--pages/profile/childCpn/w-list-view/w-list-view.wxml-->
 <view class='list-view'>
   <block wx:for="{{infos}}" wx:key="index">
-    <view class='list-item'>
+    <view class='list-item' data-addr="{{item.addr}}" bind:tap="itemcilck">
       <image src="/assets/images/profile/{{item.icon}}"/>
       <text>{{item.info}}</text>
     </view>

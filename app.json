@@ -1,14 +1,18 @@
 {
   "pages": [
+    "pages/addr/add/index",
+    "pages/login/index",
+    "pages/help/help",
+    "pages/about/about",
+    "pages/order/order",
     "pages/good/good",
-    "pages/detail/detail",
     "pages/home/home",
     "pages/category/category",
     "pages/cart/cart",
     "pages/profile/profile",
-    "pages/test/test",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/addr/list/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -41,7 +45,7 @@
         "text": "个人中心",
         "iconPath": "assets/images/tabbar/profile.png",
         "selectedIconPath": "assets/images/tabbar/profile_active.png"
-      }            
+      }
     ]
   },
   "style": "v2",

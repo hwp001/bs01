@@ -1,0 +1,8 @@
+/* pages/addr/list/index.wxss */
+.radio{
+  float: left;
+  background-size: 100%;
+}
+.bottom{
+  margin-top: 5rpx;
+}
