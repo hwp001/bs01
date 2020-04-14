@@ -28,7 +28,7 @@ Component({
   methods: {
     onCheckClick(e) {
       // 1.查找到对应的商品
-      const goods = app.globalData.cartList.find(item => item.iid == this.properties.goods.iid)
+      const goods = app.globalData.cartList.find(item => item.id == this.properties.goods.id)
       goods.checked = !goods.checked
 
       // 2.获取当前商品的index

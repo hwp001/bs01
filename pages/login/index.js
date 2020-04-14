@@ -32,15 +32,11 @@ Page({
     setTimeout(function (hasUserInfo, canIUse) {
       if (!(!hasUserInfo && canIUse)) {
         //暂时先跳转到地址页 //后面在跳转到主页
-        wx.navigateTo({
-          url: '/pages/addr/add/index',
+        wx.switchTab({
+          url: '/pages/home/home',
         })
-
-        // wx.switchTab({
-        //   url: '/pages/home/home',
-        // })
       }
-    }, 2000);
+    }, 1000);
   },
   //登录并且获取用户权限
   getUserInfo(){
@@ -86,12 +82,9 @@ Page({
                     wx.setStorageSync('openId', userInfo_.openId)
                     //跳转页面
                     //暂时先跳转到地址页 //后面在跳转到主页
-                    wx.navigateTo({
-                      url: '/pages/addr/add/index',
+                    wx.switchTab({
+                      url: '/pages/home/home',
                     })
-                    // wx.switchTab({
-                    //   url: '/pages/home/home',
-                    // })
                   } else {
                     console.log('解密失败')
                   }

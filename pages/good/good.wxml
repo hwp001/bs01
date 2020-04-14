@@ -11,5 +11,7 @@
   <!-- 4、商品推荐 -->
   <w-recommend recommends="{{recommends}}" />
 </scroll-view>
-<!-- 加入购物车 -->
-<w-bottom-bar bind:addcart="onAddCart" bind:onSwitchTab="onSwitchTab" />
+<!-- 5、加入购物车 -->
+<w-bottom-bar bind:addcart="onAddCart" bind:onSwitchTab="onSwitchTab" buyState="{{goodDetail.buy_state}}" />
+<!-- 6、跳转购物车按钮 -->
+<w-bottom-right />

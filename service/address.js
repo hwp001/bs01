@@ -1,4 +1,7 @@
-import request from './network.js';
+import {
+  requestl,
+  request
+} from './network.js';
 
 export function addCargo(data) {
   return request({
@@ -15,7 +18,7 @@ export function getCargo(data) {
 }
 
 export function updateCargo(data) {
-  return request({
+  return requestl({
     url: '/api/updateCargo',
     data: data
   })
@@ -29,8 +32,15 @@ export function getCargoById(data) {
 }
 
 export function updateCargoById(data) {
-  return request({
+  return requestl({
     url: '/api/updateCargoById',
+    data: data
+  })
+}
+
+export function delCargoById(data) {
+  return requestl({
+    url: '/api/delCargoById',
     data: data
   })
 }

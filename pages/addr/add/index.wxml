@@ -42,8 +42,8 @@
             </view>
             <view class="weui-cells__title">
                 详细地址
-                <view class="icon_success" bindtap="chooseLocation">
-                    <icon type="success" size="23"></icon>
+                <view class="icon_success" bind:tap="chooseLocation">
+                    <icon type="success" size="26"></icon>
                 </view>
             </view>
             <view class="weui-cells weui-cells_after-title">

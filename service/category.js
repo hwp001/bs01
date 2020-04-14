@@ -1,4 +1,7 @@
-import request from './network.js';
+import {
+  request,
+  requestl
+} from './network.js';
 
 export function getGoodCategory(){
   return request({
@@ -7,7 +10,7 @@ export function getGoodCategory(){
 }
 
 export function getChildCategory(data){
-  return request({
+  return requestl({
     url: '/api/childCategory',
     data: data
   })

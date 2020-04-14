@@ -1,4 +1,6 @@
-import request from './network.js';
+import {
+  request
+} from './network.js';
 export function getDetail(data)
 {
   return request({

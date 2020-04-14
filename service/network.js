@@ -3,7 +3,7 @@ import {
   timeout
 } from "./config.js";
 
-function request(options)
+export function request(options)
 {
   wx.showLoading({
     title: '数据加载中ing',
@@ -25,4 +25,21 @@ function request(options)
   });
 }
 
-export default request;
+
+
+export function requestl(options) {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: baseURL + options.url,
+      method: options.method | 'get',
+      timeout: timeout,
+      data: options.data,
+      success: function (res) {
+        resolve(res.data);
+      },
+      fail: reject,
+      complete: res => {
+      }
+    })
+  });
+}

@@ -35,7 +35,7 @@ App({
   },
   //1、购物车判断商品是否已经添加进来
   addToCart(obj){
-    const oldInfo = this.globalData.cartList.find((item) => item.iid === obj.iid);
+    const oldInfo = this.globalData.cartList.find((item) => item.id === obj.id);
     if (oldInfo) {
       oldInfo.count += 1;
     } else {

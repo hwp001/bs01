@@ -7,5 +7,5 @@
   <view class='counter'>
     总计: ¥{{price}}
   </view>
-  <view class='payment'>去计算({{counter}})</view>
+  <view class='payment'>立即下单({{counter}})</view>
 </view>

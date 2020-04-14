@@ -9,6 +9,9 @@ Page({
     totalCounter: 0
   },
   onLoad() {
+    
+  },
+  onShow() {
     // 1.第一次加载数据
     this.setData({
       cartList: app.globalData.cartList
@@ -36,8 +39,7 @@ Page({
       })
       this.changeData()
     }
-  },
-  onShow() {
+
     wx.setNavigationBarTitle({
       title: `购物车(${this.data.cartList.length})`,
     })
@@ -52,15 +54,20 @@ Page({
       })
       this.setData({
         cartList: this.data.cartList,
-        isSelectAll: false
+        isSelectAll: false,
+        totalPrice:0
       })
     } else { // 某些没选中
+      let totalPrice = 0; //let 有个指向 const 没有指向
       this.data.cartList.forEach(item => {
         item.checked = true
+        totalPrice += item.price * item.count
       })
+      console.log(totalPrice)
       this.setData({
         cartList: this.data.cartList,
-        isSelectAll: true
+        isSelectAll: true,
+        totalPrice: totalPrice
       })
     }
   },
@@ -68,7 +75,6 @@ Page({
     // 1.获取所有选中数据
     let totalPrice = 0;
     let counter = 0;
-
     for (let item of this.data.cartList) {
       if (item.checked) {
         counter++

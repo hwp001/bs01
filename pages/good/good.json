@@ -1,10 +1,10 @@
 {
   "usingComponents": {
     "w-swiper": "/components/w-swiper/w-swiper",
-
     "w-bottom-bar": "./childCpn/w-bottom-bar/w-bottom-bar",
     "w-base-info": "./childCpn/w-base-info/w-base-info",
     "w-comment": "./childCpn/w-comment/w-comment",
-    "w-recommend": "./childCpn/w-recommend/w-recommend"
+    "w-recommend": "./childCpn/w-recommend/w-recommend",
+    "w-bottom-right": "./childCpn/w-bottom-right/w-bottom-right"
   }
 }
