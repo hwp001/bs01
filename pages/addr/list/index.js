@@ -18,14 +18,6 @@ Page({
     getCargo(data).then(res => {
       console.log(res)
       if (res.statu == 1) {
-        res.data.map(item => {
-          if (item.sort == 'false'){
-            item.sort = false
-          } else {
-            item.sort = true
-          }
-          return item
-        })
         this.setData({
           cargo: res.data
         })

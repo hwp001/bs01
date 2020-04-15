@@ -81,13 +81,74 @@ Page({
         totalPrice += item.price * item.count
       }
     }
-
     console.log(counter, totalPrice)
-
     // 2.修改数据
     this.setData({
       totalCounter: counter,
       totalPrice: totalPrice
     })
+  },
+  //下单购买
+  orderItem(){
+    //订单对象
+    const obj = {}
+    //装入已勾选对象
+    obj.cartList = []
+    //获取当前时间戳
+    var timestamp = new Date().getTime() 
+    //订单编号
+    obj.orderNum = timestamp + this.randomString(6)
+    //将已选的数组放进obj对象
+    let cartList = this.data.cartList
+    //创建空数组
+    const cartListP = []
+    for(let i=0;i<cartList.length;i++){
+      if(cartList[i].checked) {
+        obj.cartList.push(cartList[i])
+      } else {
+        //将没勾选放入另一个数组
+        cartListP.push(cartList[i])
+      }
+    }
+    //若是没有勾选对象时
+    if(obj.cartList.length == 0){
+      wx.showToast({
+        title: '请勾选对象',
+      })
+      return false
+    }
+    obj.totalCounter = this.data.totalCounter
+    obj.totalPrice = this.data.totalPrice
+    app.globalData.orderList.push(obj)
+    //将此订单对象加入全局对象
+
+      //下单后 购物车只剩下没勾选
+      this.setData({
+        cartList: cartListP
+      })
+        wx.navigateTo({
+          url: '/pages/order/order',
+        })
+    
+  },
+
+
+
+
+
+
+   //生成随机字符串
+    randomString(len) {
+      len = len || 32;
+      var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+      var maxPos = $chars.length;
+      var pwd = '';
+      for(let i = 0; i<len; i++) {
+    pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+
+  }
+  return pwd;
   }
 })
+
+

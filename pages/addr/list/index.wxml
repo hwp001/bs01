@@ -11,8 +11,9 @@
               </view>
               <view class="weui-media-box__desc">{{item.address}}</view>
               <view class="weui-media-box__info">
-                <view class="weui-media-box__info__meta edit" bind:tap="editItem" data-id="{{item.id}}">编辑</view>
-                <view class="weui-media-box__info__meta del" bind:tap='delItem' data-id="{{item.id}}">删除</view>
+              <!-- catchtap 防止冒泡事件 -->
+                <view class="weui-media-box__info__meta edit" catchtap='editItem'  data-id="{{item.id}}">编辑</view>
+                <view class="weui-media-box__info__meta del" catchtap='delItem' data-id="{{item.id}}">删除</view>
               </view>
             </view>
           </view>

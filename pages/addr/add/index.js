@@ -55,6 +55,7 @@ Page({
           const data = e.detail.value
           data.openId = wx.getStorageSync('openId')
           addCargo(e.detail.value).then(res => {
+            console.log(res)
             if (res.statu == 1){
               wx.showToast({
                 title: '新增地址数据成功',

@@ -14,7 +14,7 @@ Page({
     switch2Checked: false,
     radioItems: [
       { name: '女', value: '0' ,checked : false},
-      { name: '男', value: '1' ,checked : false  }
+      { name: '男', value: '1' ,checked : false }
     ],
     id:''
   },
@@ -29,11 +29,6 @@ Page({
       console.log(res)
       if (res.statu == 1){
         const cargo = res.cargo
-        if (cargo.sort == 'true'){
-          cargo.sort = true
-        } else {
-          cargo.sort = false
-        }
         const radioItems = this.data.radioItems
         for (var i=0;i<radioItems.length;i++){
           if (radioItems[i].name == cargo[0].sex) {

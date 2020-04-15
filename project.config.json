@@ -97,9 +97,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "address/list",
-					"pathName": "pages/address/list/index",
+					"id": 6,
+					"name": "pages/addr/list/index",
+					"pathName": "pages/addr/list/index",
 					"query": "",
 					"scene": null
 				},
@@ -121,6 +121,13 @@
 					"id": -1,
 					"name": "pages/addr/list/index",
 					"pathName": "pages/addr/list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/order/order",
+					"pathName": "pages/order/order",
 					"query": "",
 					"scene": null
 				}

@@ -5,5 +5,9 @@
             <cart-list-item goods="{{item}}" index="{{index}}" />
         </block>
     </scroll-view>
-    <bottom-bar selected="{{isSelectAll}}" price="{{totalPrice}}" counter="{{totalCounter}}" bindtap="onSelectAll" />
+    <bottom-bar selected="{{isSelectAll}}" 
+                price="{{totalPrice}}" 
+                counter="{{totalCounter}}" 
+                bind:orderItem="orderItem"
+                bind:selectItem="onSelectAll" />
 </view>

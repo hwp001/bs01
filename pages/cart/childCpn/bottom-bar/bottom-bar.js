@@ -27,6 +27,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    itemSelect(){
+      this.triggerEvent('selectItem', {}, {})
+    },
+    itemClick(){
+      this.triggerEvent('orderItem',{},{})
+    }
   }
 })

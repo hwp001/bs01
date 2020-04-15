@@ -17,7 +17,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    clickItem(){
+    clickItem() {
       wx.switchTab({
         url: '/pages/cart/cart',
       })

@@ -1,2 +1,73 @@
 <!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<form bindsubmit="submitForm">
+<view class="order">
+  <scroll-view scroll-y>
+    <!-- 1、商品信息 -->
+    <view class="title">商品信息</view>
+      <view class="label">
+        <block wx:for="{{orderList.cartList}}" wx:key="index">
+        <cart-list-item goods="{{item}}" index="{{index}}" />
+        </block>
+      <!-- 1-2、商品数量 商品总价格 -->
+      <view >
+        <view><text>商品总价格：${{orderList.totalPrice}}元</text></view>
+        <view><text>商品总数量：共{{orderList.totalCounter}}件</text></view>
+      </view>
+    </view>
+    <!-- 2、收货方式 -->
+    <view class="title">收货方式</view>
+    <radio-group name="address" bind:change="addressItem" class="label group">
+      <radio  wx:for="{{gainWay}}" wx:key="{{index}}" value="{{item.value}}" checked="{{item.checked}}" > 
+        <view class="radio">{{item.name}}</view>  
+      </radio>
+    </radio-group>
+    <!-- 2-1 上门自提 -->
+    <view wx:if="{{gainStatu}}">
+      <view class="title">自提地点</view>
+        <view class="label">
+          <view class="group">
+            <label>提货人姓名：</label>
+              <input class="input" name="userName" placeholder="请输入用户名！" />
+          </view>
+          <view class="group">
+            <label>提货号码：</label>
+              <input class="input" name="phone" placeholder="请输入手机号码！" />
+          </view>
+          <view>自提地点：广东省惠州市金光大道小花园润发一号店</view>
+        </view> 
+    </view>
+    <!-- 2-2 快递送货 -->
+    <view wx:else>
+      <view class="title">快递地址</view>
+        <view class="label">
+          <picker name="addressL" mode="selector" range="{{cargoList}}" value="{{cargoIndex}}"  bindchange="pickChange">
+            {{cargoList[cargoIndex]}}
+          </picker> 
+        </view>
+    </view>
+    <!-- 3、预订时间 -->
+    <view>
+    <view class="title">预订时间</view>
+      <view class="label">
+         <picker name="date" mode="date" value="{{date}}" start="2020-04-01" end="2030-09-01" bindchange="bindDateChange">
+            <label  class="date">年份：{{date}}</label>
+          </picker> 
+           <picker  name="time" mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+              <label class="date">日期：{{time}}</label>
+           </picker>       
+      </view>
+    </view>
+    <!-- 4、支付方式 -->
+    <view class="title">支付方式</view>
+    <radio-group name="pay" bind:change="payItem" class="label group">
+      <radio  wx:for="{{payWay}}" wx:key="{{index}}" value="{{item.value}}" checked="{{item.checked}}">
+        <view class="radio">{{item.name}}</view>
+      </radio>
+    </radio-group>
+
+    <view>
+      <button  formType="submit">支付订单</button>
+    </view>
+  </scroll-view>
+</view>
+</form>
