@@ -1,11 +1,14 @@
 // pages/order/order.js
 import {
   getCargo
-} from '../../service/address.js'
+} from '../../../service/address.js'
 import {
   addOrder
-} from '../../service/order.js'
-
+} from '../../../service/order.js'
+import {
+  checkPhone,
+  checkName
+} from '../../../service/tool.js'
 const app = getApp()
 Page({
   /**
@@ -87,18 +90,59 @@ Page({
   submitForm(e){
     const data = e.detail.value
     //1、查看 收货方式 
+    data.openId = wx.getStorageSync('openId')
+    data.orderNum = this.data.orderList.orderNum
+    data.cartList = this.data.orderList.cartList
+    data.totalCount = this.data.orderList.totalCounter
+    data.totalPrice = this.data.orderList.totalPrice
     //快递收货 取出 cargoId;自提则 直接发送
     if (data.address == "0") {
       const cargoId = this.data.cargoId[data.addressL]
       data.cargoId = cargoId
-      console.log(cargoId)
+      //新增订单
+      this._addOrder(data)
+    } else {
+      //检验手机号 姓名 是否符合要求
+      const Nbool = checkName(data.userName)
+      if (Nbool) {
+        const Pbool = checkPhone(data.phone)
+        if (!Pbool) {
+          wx.showToast({
+            title: '手机号码格式不正确',
+          })
+          return false
+        } else {
+          //新增订单
+          this._addOrder(data)
+        }
+      } else {
+        wx.showToast({
+          title: '姓名格式不正确',
+        })
+      }
     }
-    data.openId = wx.getStorageSync('openId')
-    data.cartList = this.data.orderList.cartList
-    addOrder(data).then(res => {
-      console.log(res)
-    })
 
+  },
+  //新增订单
+  _addOrder(data){
+      addOrder(data).then(res => {
+        console.log(res)
+            if (res.statu == 1) {
+              wx.showToast({
+                title: '新增订单成功',
+              })
+              setTimeout(function () {
+                wx.reLaunch({
+                  url: '/pages/order/detail/order?id'+res.data.id,
+                })
+              }, 1000)
+            } else {
+              wx.showToast({
+                title: res.err,
+              })
+            }
+          })
   }
+
 
 })

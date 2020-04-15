@@ -4,7 +4,7 @@
     "pages/login/index",
     "pages/help/help",
     "pages/about/about",
-    "pages/order/order",
+    "pages/order/add/order",
     "pages/good/good",
     "pages/home/home",
     "pages/category/category",
@@ -13,7 +13,9 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/addr/list/index",
-    "pages/addr/edit/index"
+    "pages/addr/edit/index",
+    "pages/order/list/order",
+    "pages/order/detail/order"
   ],
   "window": {
     "backgroundTextStyle": "light",

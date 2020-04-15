@@ -127,7 +127,7 @@ Page({
         cartList: cartListP
       })
         wx.navigateTo({
-          url: '/pages/order/order',
+          url: '/pages/order/add/order',
         })
     
   },
