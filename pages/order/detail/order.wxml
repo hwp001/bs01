@@ -1,2 +1,52 @@
-<!--pages/order/detail/order.wxml-->
-<text>pages/order/detail/order.wxml</text>
+<!-- pages/order/order.wxml -->
+<view class="order">
+  <scroll-view scroll-y>
+    <!-- 1、商品信息 -->
+    <view class="title">商品信息</view>
+    <view class="label">
+      <block wx:for="{{goodList}}" wx:key="index">
+        <cart-list-item goods="{{item}}" index="{{index}}" />
+      </block>
+      <!-- 1-2、商品数量 商品总价格 -->
+      <view>
+        <view>
+          <text>商品总价格：${{orderList.totalPrice}}元</text>
+        </view>
+        <view>
+          <text>商品总数量：共{{orderList.totalCount}}件</text>
+        </view>
+      </view>
+    </view>
+    <!-- 2、收货方式 -->
+    <view class="title">收货方式：{{orderList.gain_way_bool}}</view>
+    <!-- 2-1 上门自提 -->
+    <view class="title">收货地址</view>
+    <view class="label">
+      <view class="group">
+        <label>收货姓名：</label>
+        {{cargoList.name}}
+      </view>
+      <view class="group">
+        <label>收货号码：</label>
+        {{cargoList.phone}}
+      </view>
+      <view class="group">收货地址： {{cargoList.address}}</view>
+    </view>
+    <!-- 3、预订时间 -->
+    <view>
+      <view class="title">预订时间： {{orderList.time}}</view>
+      <view class="label"></view>
+    </view>
+    <!-- 4、支付方式 -->
+    <view class="title">支付方式：{{orderList.pay_way_bool}}</view>
+    <view wx:if="{{orderList.true_order == 0}}">
+      <button bind:tap="sign">签收订单</button>
+    </view>
+    <view wx:elif="{{orderList.true_order == 1}}">
+      <button bind:tap="comment">商品评论</button>
+    </view>
+    <view wx:elif="{{orderList.true_order == 1}}">
+      <button bind:tap="recover">恢复订单</button>
+    </view>
+  </scroll-view>
+</view>

@@ -17,6 +17,13 @@ export function getOrder(data) {
   })
 }
 
+export function getOrderById(data) {
+  return request({
+    url: '/api/getOrderById',
+    data: data
+  })
+}
+
 export function cancelOrder(data) {
   return request({
     url: '/api/cancelOrder',
