@@ -9,3 +9,17 @@ export function addOrder(data){
     data: data
   })
 }
+
+export function getOrder(data) {
+  return request({
+    url: '/api/getOrder',
+    data: data
+  })
+}
+
+export function cancelOrder(data) {
+  return request({
+    url: '/api/cancelOrder',
+    data: data
+  })
+}

@@ -1,1 +1,7 @@
 /* pages/order/list/order.wxss */
+.weui-form-preview{
+    margin-bottom: 50rpx;
+}
+.page{
+  background: #DCDCDC;
+}

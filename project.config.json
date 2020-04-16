@@ -130,6 +130,13 @@
 					"pathName": "pages/order/order",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/order/list/order",
+					"pathName": "pages/order/list/order",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
