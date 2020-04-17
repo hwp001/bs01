@@ -49,9 +49,8 @@ Page({
   chooseImage(e) {
     console.log(e)
     const id = e.currentTarget.dataset.id
-    const files = this.data.files
+    let files = this.data.files
     var that = this;
-    let imgArr = []
     //先判断 files 是否长度为 3
         wx.chooseImage({
           count: 3,
@@ -59,14 +58,15 @@ Page({
           sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
           success: function (res) {
             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-          imgArr.push(res.tempFilePaths) 
-          console.log(22,imgArr)
           for (var i=0; i<files.length; i++){
             console.log(11,files[i])
             if (files[i].id == id) {
-              files[i].img = imgArr
+              for (let item of res.tempFilePaths) {
+                files[i].img.push(item)
+              }
             }
           }
+          console.log(files)
             that.setData({
               files: files
             });
@@ -91,8 +91,8 @@ Page({
       for(let item of id){
         for (let i = 0; i < goodList.length; i++) {
           if (item == goodList[i].id) {
-            goodArr.push(goodList[i]) 
-              files[i] = { id: goodList[i].id }
+              goodArr.push(goodList[i]) 
+              files[i] = { id: goodList[i].id, img: [] }
           }
         }
       }
