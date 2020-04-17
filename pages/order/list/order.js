@@ -7,6 +7,7 @@ Page({
   data: {
     titles: ['未签收','已签收','已取消'],
     index: 0,
+    statu: true,
     allOrder: []
   },
   onLoad(){
@@ -30,16 +31,19 @@ Page({
   },
   //获得tab 的 index
   tabclick(e){
-    console.log(e)
     const index = e.detail.index
+    let statu = true
+    if (index == 1) {
+      statu = false
+    }
     this.setData({
-      index:index
+      index: index,
+      statu: statu
     })
   },
   delItem(e){
     const id = e.currentTarget.dataset.id
     const openId = wx.getStorageSync('openId')
-
     wx.showModal({
       title: '提示',
       content: '确定要取消订单',
@@ -67,7 +71,5 @@ Page({
         }
       }
     })
-
-
   }
 })

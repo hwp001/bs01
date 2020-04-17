@@ -15,7 +15,8 @@
     "pages/addr/list/index",
     "pages/addr/edit/index",
     "pages/order/list/order",
-    "pages/order/detail/order"
+    "pages/order/detail/order",
+    "pages/order/comment/order"
   ],
   "window": {
     "backgroundTextStyle": "light",

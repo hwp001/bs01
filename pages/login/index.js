@@ -1,7 +1,10 @@
 //index.js
+import {
+  baseURL
+} from '../../service/config.js'
+
 //获取应用实例
 const app = getApp()
-
 Page({
   data: {
     motto: 'Hello World',
@@ -59,7 +62,7 @@ Page({
               console.log({ encryptedData: res.encryptedData, iv: res.iv, code: code })
               //3.请求自己的服务器，解密用户信息 获取unionId等加密信息
               wx.request({
-                url: 'http://bs01.test/api/decode',//自己的服务接口地址
+                url: baseURL + '/api/decode',//自己的服务接口地址
                 method: 'post',
                 header: {
                   'content-type': 'application/x-www-form-urlencoded'
@@ -81,7 +84,7 @@ Page({
                     wx.setStorageSync('logged', true)
                     wx.setStorageSync('openId', userInfo_.openId)
                     //跳转页面
-                    //暂时先跳转到地址页 //后面在跳转到主页
+                    //跳转到主页
                     wx.switchTab({
                       url: '/pages/home/home',
                     })

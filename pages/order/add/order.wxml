@@ -47,7 +47,7 @@
     </view>
     <!-- 3、预订时间 -->
     <view>
-    <view class="title">预订时间</view>
+    <view class="title">预订收货时间</view>
       <view class="label">
          <picker name="date" mode="date" value="{{date}}" start="2020-04-01" end="2030-09-01" bindchange="bindDateChange">
             <label  class="date">年份：{{date}}</label>

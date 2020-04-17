@@ -30,3 +30,17 @@ export function cancelOrder(data) {
     data: data
   })
 }
+
+export function recoverOrder(data) {
+  return request({
+    url: '/api/recoverOrder',
+    data: data
+  })
+}
+
+export function signOrder(data) {
+  return request({
+    url: '/api/signOrder',
+    data: data
+  })
+}

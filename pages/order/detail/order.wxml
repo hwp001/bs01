@@ -10,7 +10,7 @@
       <!-- 1-2、商品数量 商品总价格 -->
       <view>
         <view>
-          <text>商品总价格：${{orderList.totalPrice}}元</text>
+          <text>商品总价格：￥{{orderList.totalPrice}}元</text>
         </view>
         <view>
           <text>商品总数量：共{{orderList.totalCount}}件</text>
@@ -34,19 +34,19 @@
     </view>
     <!-- 3、预订时间 -->
     <view>
-      <view class="title">预订时间： {{orderList.time}}</view>
-      <view class="label"></view>
+      <view class="title">预订收货时间： {{orderList.time}}</view>
+
     </view>
     <!-- 4、支付方式 -->
     <view class="title">支付方式：{{orderList.pay_way_bool}}</view>
     <view wx:if="{{orderList.true_order == 0}}">
-      <button bind:tap="sign">签收订单</button>
+      <button bind:tap="sign" data-id="{{orderList.id}}">签收订单</button>
     </view>
     <view wx:elif="{{orderList.true_order == 1}}">
-      <button bind:tap="comment">商品评论</button>
+      <button bind:tap="comment" data-id="{{orderList.id}}">评论订单</button>
     </view>
-    <view wx:elif="{{orderList.true_order == 1}}">
-      <button bind:tap="recover">恢复订单</button>
+    <view wx:elif="{{orderList.true_order == 2}}">
+      <button bind:tap="recover" data-id="{{orderList.id}}">恢复订单</button>
     </view>
   </scroll-view>
 </view>

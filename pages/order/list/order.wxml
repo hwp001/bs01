@@ -28,10 +28,19 @@
                   <view class="weui-form-preview__item">
                       <view class="weui-form-preview__label">收件方式</view>
                       <view class="weui-form-preview__value">{{item.gain_way_bool}}</view>
-                  </view>                                 
+                  </view> 
+                  <view class="weui-form-preview__item">
+                      <view class="weui-form-preview__label">下单时间</view>
+                      <view class="weui-form-preview__value">{{item.created_at}}</view>
+                  </view>                    
+                  <view class="weui-form-preview__item">
+                      <view class="weui-form-preview__label">预订收货时间</view>
+                      <view class="weui-form-preview__value">{{item.time}}</view>
+                  </view>                                                    
               </view>
               <view class="weui-form-preview__ft">
-                <view class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" bind:tap="delItem" data-id="{{item.id}}">
+              
+                <view wx:if="{{statu}}" class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" bind:tap="delItem" data-id="{{item.id}}">
                   取消            
                 </view>
                   <navigator url="{{'/pages/order/detail/order?id=' + item.id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">详情</navigator>
@@ -39,3 +48,6 @@
           </view>
   </view>
 </scroll-view>
+
+<!-- 跳转 -->
+<w-right />

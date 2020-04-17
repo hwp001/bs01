@@ -1,0 +1,53 @@
+<!-- pages/order/comment/order.wxml -->
+<view class="comment">
+  <view class="title">评论商品</view>
+  <view class="main">
+    <view class="up">
+      <view>订单编号：{{orderList.orderNum}}</view>
+      <view>
+        <checkbox-group bindchange="checkboxChange">
+          <view>
+            评论商品:
+            <label class="checkbox" wx:for="{{goodList}}" wx:key="{{index}}">
+              <checkbox value="{{item.id}}" />
+              {{item.title}}
+            </label>
+          </view>
+        </checkbox-group>
+      </view>
+    </view>
+    <!-- 商品评论 -->
+    <view class="main01" wx:for="{{commentList}}" wx:key="{{index}}">
+      <view>商品名：{{item.title}}</view>
+      <view class='comment01'>
+        <view class="page-section">
+          <view class="page-section-title dafen">
+            商品打分：
+            <radio-group bind:change="radioClick">
+              <radio wx:for="{{radioItem}}" wx:key="{{index}}" value="{{item.value}}">
+                {{item.name}}
+              </radio>
+            </radio-group>
+          </view>
+          <view class="textarea-wrp">
+            <view>商品评论:</view>
+            <textarea class="pinlun" auto-focus="true" placeholder="说几句话吧" style="height: 5em" />
+          </view>
+          <!-- 选择图片 -->
+          <view class="comment02">
+            <view class="">选择商品图片:</view>
+            <block wx:for="{{files}}" wx:key="*this">
+              <view class="" bindtap="previewImage" bindlongpress="replaceImage" data-value="{{item}}" id="{{index}}">
+                <image class="box_img" src="{{item}}" mode="aspectFill" />
+              </view>
+            </block>
+            <view class="box">
+              <image class="box_img" src="../../../assets/images/comment/img.png" bindtap="chooseImage" />
+              <!-- <view class="box_img" bindtap="chooseImage"></view> -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

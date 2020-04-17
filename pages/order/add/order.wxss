@@ -1,6 +1,5 @@
 /* pages/order/order.wxss */
 .title{
-  width: 200rpx;
   height: 80rpx;
   border-radius: 10%;
   background: #F5F5DC;

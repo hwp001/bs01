@@ -1,0 +1,17 @@
+/* pages/good/childCpn/w-bottom-right/w-bottom-right.wxss */
+
+.cart{
+  z-index: 10;
+  position: fixed;
+  right: 20rpx;
+  top: 500rpx;
+  background: #fff;
+  border-radius: 45%;
+  width: 80rpx;
+  height: 80rpx;
+}
+.cart image{
+  width: 70rpx;
+  height: 70rpx;
+  margin: 5rpx 0 0 5rpx;
+}

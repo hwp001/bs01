@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "w-tab-control": "../../components/w-tab-control/w-tab-control"
+    "w-tab-control": "../../components/w-tab-control/w-tab-control",
+    "w-right": "./childCpn/w-right/w-right"
   }
 }

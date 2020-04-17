@@ -133,7 +133,7 @@ Page({
               })
               setTimeout(function () {
                 wx.reLaunch({
-                  url: '/pages/order/detail/order?id'+res.data.id,
+                  url: '/pages/order/list/order',
                 })
               }, 1000)
             } else {
