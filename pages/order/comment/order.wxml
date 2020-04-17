@@ -1,4 +1,5 @@
 <!-- pages/order/comment/order.wxml -->
+<form bindsubmit="submitForm">
 <view class="comment">
   <view class="title">评论商品</view>
   <view class="main">
@@ -23,7 +24,7 @@
         <view class="page-section">
           <view class="page-section-title dafen">
             商品打分：
-            <radio-group bind:change="radioClick">
+            <radio-group bind:change="radioClick" name="dafen[]">
               <radio wx:for="{{radioItem}}" wx:key="{{index}}" value="{{item.value}}">
                 {{item.name}}
               </radio>
@@ -31,18 +32,18 @@
           </view>
           <view class="textarea-wrp">
             <view>商品评论:</view>
-            <textarea class="pinlun" auto-focus="true" placeholder="说几句话吧" style="height: 5em" />
+            <textarea name="pinlun[]"  class="pinlun" auto-focus="true" placeholder="说几句话吧" style="height: 5em" />
           </view>
           <!-- 选择图片 -->
           <view class="comment02">
             <view class="">选择商品图片:</view>
-            <block wx:for="{{files}}" wx:key="*this">
+            <block wx:for="{{files[index].img}}" wx:key="*this">
               <view class="" bindtap="previewImage" bindlongpress="replaceImage" data-value="{{item}}" id="{{index}}">
                 <image class="box_img" src="{{item}}" mode="aspectFill" />
               </view>
             </block>
             <view class="box">
-              <image class="box_img" src="../../../assets/images/comment/img.png" bindtap="chooseImage" />
+              <image name="img[]" class="box_img" src="../../../assets/images/comment/img.png" bindtap="chooseImage" data-id="{{item.id}}" />
               <!-- <view class="box_img" bindtap="chooseImage"></view> -->
             </view>
           </view>
@@ -50,4 +51,8 @@
       </view>
     </view>
   </view>
+    <view>
+      <button  formType="submit">评论商品</button>
+    </view>
 </view>
+</form>

@@ -23,51 +23,55 @@ Page({
       { name: 3, value: 3 },
       { name: 4, value: 4 },
       { name: 5, value: 5 }
-    ]
+    ],
+    commentMain:[]
   },
-  //替换图片
-  replaceImage(e){
-    //图片id
-    const id = parseInt(e.currentTarget.id) 
-    const files = this.data.files
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: res => {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        //重新覆盖地址
-        files[id] = res.tempFilePaths
-        this.setData({
-          files: files
-        });
-      }
-    })
-  },
+  // //替换图片
+  // replaceImage(e){
+  //   //图片id
+  //   const id = parseInt(e.currentTarget.id) 
+  //   const files = this.data.files
+  //   wx.chooseImage({
+  //     count: 1,
+  //     sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+  //     sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+  //     success: res => {
+  //       // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+  //       //重新覆盖地址
+  //       files[id] = res.tempFilePaths
+  //       this.setData({
+  //         files: files
+  //       });
+  //     }
+  //   })
+  // },
   //选择照片
   chooseImage(e) {
-    //先判断 files 是否长度为 3
+    console.log(e)
+    const id = e.currentTarget.dataset.id
     const files = this.data.files
-    const that = this
-    if (files.length == 3) {
-      wx.showToast({
-        title: '最多只能有三张图片',
-      })
-      return false
-    } else {
+    var that = this;
+    let imgArr = []
+    //先判断 files 是否长度为 3
         wx.chooseImage({
           count: 3,
           sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
           sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
           success: function (res) {
             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+          imgArr.push(res.tempFilePaths) 
+          console.log(22,imgArr)
+          for (var i=0; i<files.length; i++){
+            console.log(11,files[i])
+            if (files[i].id == id) {
+              files[i].img = imgArr
+            }
+          }
             that.setData({
-              files: that.data.files.concat(res.tempFilePaths)
+              files: files
             });
           }
         })
-    }
-
   },
   // 预览照片
   previewImage: function (e) {
@@ -83,18 +87,18 @@ Page({
       const id = e.detail.value
       const goodList = this.data.goodList
       let goodArr = []
+      let files = []
       for(let item of id){
-        console.log(item)
         for (let i = 0; i < goodList.length; i++) {
-          console.log(goodList[i])
           if (item == goodList[i].id) {
-              goodArr[i] = goodList[i] 
+            goodArr.push(goodList[i]) 
+              files[i] = { id: goodList[i].id }
           }
         }
       }
-
       this.setData({
-        commentList: goodArr
+        commentList: goodArr,
+        files: files
       })
     },
 
