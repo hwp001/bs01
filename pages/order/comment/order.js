@@ -16,7 +16,6 @@ Page({
     goodList: {},
     cargoList: {},
     commentList:[],
-    files: [],
     radioItem: [
       { name: 1, value: 1 },
       { name: 2, value: 2 },
@@ -24,16 +23,16 @@ Page({
       { name: 4, value: 4 },
       { name: 5, value: 5 }
     ],
-    commentMain:[]
+    commentMain:[],
+    goodComment:[]
   },
   // //替换图片
   replaceImage(e){
-    console.log(e)
     //图片索引
-    const index = parseInt(e.currentTarget.dataset.index)
+    const index = e.currentTarget.dataset.index
     //图片所属集合id 
     const id = e.currentTarget.dataset.id
-    const files = this.data.files
+    const commentList = this.data.commentList
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -41,71 +40,65 @@ Page({
       success: res => {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         //重新覆盖地址
-        for(let item of files){
+        for (let item of commentList){
           if (item.id == id) {
             item.img[index] = res.tempFilePaths
           }
         }
         this.setData({
-          files: files
+          commentList: commentList
         });
       }
     })
   },
   //选择照片
   chooseImage(e) {
-    console.log(e)
     const id = e.currentTarget.dataset.id
-    let files = this.data.files
+    let commentList = this.data.commentList
     var that = this;
     let img = []
-    //先判断 files 是否长度为 3
-    //将此id下的img放入img 判断img长度
-    for (let item of files){
-      if (item.id == id) {
-        img = item.img
-      }
-    }
-    if (img.length == 3) {
-      wx.showToast({
-        title: '最多只能有三张图片',
-      })
-    } else {
       wx.chooseImage({
         count: 3,
         sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
         success: function (res) {
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-          for (var i = 0; i < files.length; i++) {
-            console.log(11, files[i])
-            if (files[i].id == id) {
-              for (let item of res.tempFilePaths) {
-                files[i].img.push(item)
+          for (let item of commentList){
+              //先预存原本img 如果超过三张重定义
+            if (item.id == id){
+              img.push(item.img)
+              for(let a of res.tempFilePaths) {
+                item.img.push(a)
+              }
+            //先判断 files 是否长度为 3
+              if (item.img.length > 3) {
+                wx.showToast({
+                  title: '最多只能三张',
+                })
+                //若长度超过 3张 则重定义
+                item.img.length = 3
+              } else {
+                that.setData({
+                  commentList: commentList
+                });
               }
             }
           }
-          console.log(files)
-          that.setData({
-            files: files
-          });
+
         },
         fail: err => {
           console.log('fafafafa')
         }
       })
-    }
-
-
+    
   },
   // 预览照片
   previewImage: function (e) {
-    console.log(e)
     let id = e.currentTarget.dataset.id
     let index = e.currentTarget.dataset.index
-    const files = this.data.files
+    const commentList = this.data.commentList
     let imgUrl = []
-    for (let item of files){
+    for (let item of commentList){
       if (item.id == id){
         imgUrl = item.img
       }
@@ -115,30 +108,31 @@ Page({
       urls: imgUrl // 需要预览的图片http链接列表
     })
   },
-
   //选择checkbox
     checkboxChange(e) {
       console.log('checkbox发生change事件，携带value值为：', e.detail.value)
       const id = e.detail.value
       const goodList = this.data.goodList
       let goodArr = []
-      let files = []
       for(let item of id){
         for (let i = 0; i < goodList.length; i++) {
           if (item == goodList[i].id) {
-              goodArr.push(goodList[i]) 
-              files[i] = { id: goodList[i].id, img: [] }
+             //构建评论列表数据
+              goodArr.push({
+                  id: goodList[i].id,
+                  gid: goodList[i].gid,
+                  title: goodList[i].title,img:[]
+                }) 
+
           }
         }
       }
       this.setData({
         commentList: goodArr,
-        files: files
       })
     },
 
   onLoad(e) {
-    console.log(e)
     const id = e.id
     const openId = wx.getStorageSync('openId')
     getOrderById({ id: id, openId: openId }).then(res => {
@@ -161,5 +155,27 @@ Page({
       }
     })
   },
-
+  //共同事件
+  common(e){
+    const id = e.currentTarget.dataset.id
+    const commentList = this.data.commentList
+    for (let item of commentList) {
+      if (item.id == id) {
+        item.star = e.detail.value
+      }
+    }
+    console.log(e.detail.value)
+  },
+  //商品评论
+  bindTextAreaBlur(e){
+    this.common(e)
+  },
+  //商品打分
+  radioClick(e){
+    this.common(e)
+  },
+  //提交商品
+  submitForm(e){
+    console.log(e)
+  }
 })

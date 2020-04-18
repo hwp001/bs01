@@ -24,26 +24,26 @@
         <view class="page-section">
           <view class="page-section-title dafen">
             商品打分：
-            <radio-group bind:change="radioClick" name="dafen[]">
-              <radio wx:for="{{radioItem}}" wx:key="{{index}}" value="{{item.value}}">
+            <radio-group bind:change="radioClick" name="dafen">
+              <radio wx:for="{{radioItem}}" wx:key="{{index}}" value="{{item.value}}" data-id="{{item.id}}" >
                 {{item.name}}
               </radio>
             </radio-group>
           </view>
           <view class="textarea-wrp">
             <view>商品评论:</view>
-            <textarea name="pinlun[]"  class="pinlun" auto-focus="true" placeholder="说几句话吧" style="height: 5em" />
+            <textarea bindblur='bindTextAreaBlur'  class="pinlun" auto-focus="true" placeholder="说几句话吧" style="height: 5em" data-id="{{item.id}}"  />
           </view>
           <!-- 选择图片 -->
           <view class="comment02">
             <view class="">选择商品图片:</view>
-            <block wx:for="{{files[index].img}}" wx:for-item="image" wx:key="*this">
+            <block wx:for="{{item.img}}" wx:for-item="image" wx:key="*this">
               <view class="" bindtap="previewImage" bindlongpress="replaceImage" data-value="{{image}}" data-index="{{index}}" data-id="{{item.id}}">
-                <image class="box_img" src="{{image}}" mode="aspectFill" />
+                <image name="img"  class="box_img" src="{{image}}" mode="aspectFill" />
               </view>
             </block>
             <view class="box">
-              <image name="img[]" class="box_img" src="../../../assets/images/comment/img.png" bindtap="chooseImage" data-id="{{item.id}}" />
+              <image class="box_img" src="../../../assets/images/comment/img.png" bindtap="chooseImage" data-id="{{item.id}}" />
               <!-- <view class="box_img" bindtap="chooseImage"></view> -->
             </view>
           </view>
