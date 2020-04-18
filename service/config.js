@@ -1,2 +1,2 @@
-export const baseURL = 'http://skbjvk.natappfree.cc'; 
+export const baseURL = 'http://bs01.test'; 
 export const timeout = 3000; 

@@ -27,39 +27,58 @@ Page({
     commentMain:[]
   },
   // //替换图片
-  // replaceImage(e){
-  //   //图片id
-  //   const id = parseInt(e.currentTarget.id) 
-  //   const files = this.data.files
-  //   wx.chooseImage({
-  //     count: 1,
-  //     sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-  //     sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-  //     success: res => {
-  //       // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-  //       //重新覆盖地址
-  //       files[id] = res.tempFilePaths
-  //       this.setData({
-  //         files: files
-  //       });
-  //     }
-  //   })
-  // },
+  replaceImage(e){
+    console.log(e)
+    //图片索引
+    const index = parseInt(e.currentTarget.dataset.index)
+    //图片所属集合id 
+    const id = e.currentTarget.dataset.id
+    const files = this.data.files
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: res => {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        //重新覆盖地址
+        for(let item of files){
+          if (item.id == id) {
+            item.img[index] = res.tempFilePaths
+          }
+        }
+        this.setData({
+          files: files
+        });
+      }
+    })
+  },
   //选择照片
   chooseImage(e) {
     console.log(e)
     const id = e.currentTarget.dataset.id
     let files = this.data.files
     var that = this;
+    let img = []
     //先判断 files 是否长度为 3
-        wx.chooseImage({
-          count: 3,
-          sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-          sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-          success: function (res) {
-            // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-          for (var i=0; i<files.length; i++){
-            console.log(11,files[i])
+    //将此id下的img放入img 判断img长度
+    for (let item of files){
+      if (item.id == id) {
+        img = item.img
+      }
+    }
+    if (img.length == 3) {
+      wx.showToast({
+        title: '最多只能有三张图片',
+      })
+    } else {
+      wx.chooseImage({
+        count: 3,
+        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success: function (res) {
+          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+          for (var i = 0; i < files.length; i++) {
+            console.log(11, files[i])
             if (files[i].id == id) {
               for (let item of res.tempFilePaths) {
                 files[i].img.push(item)
@@ -67,17 +86,33 @@ Page({
             }
           }
           console.log(files)
-            that.setData({
-              files: files
-            });
-          }
-        })
+          that.setData({
+            files: files
+          });
+        },
+        fail: err => {
+          console.log('fafafafa')
+        }
+      })
+    }
+
+
   },
   // 预览照片
   previewImage: function (e) {
+    console.log(e)
+    let id = e.currentTarget.dataset.id
+    let index = e.currentTarget.dataset.index
+    const files = this.data.files
+    let imgUrl = []
+    for (let item of files){
+      if (item.id == id){
+        imgUrl = item.img
+      }
+    }
     wx.previewImage({
-      current: e.currentTarget.id, // 当前显示图片的http链接
-      urls: this.data.files // 需要预览的图片http链接列表
+      current: index, // 当前显示图片的http链接
+      urls: imgUrl // 需要预览的图片http链接列表
     })
   },
 

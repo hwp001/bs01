@@ -37,9 +37,9 @@
           <!-- 选择图片 -->
           <view class="comment02">
             <view class="">选择商品图片:</view>
-            <block wx:for="{{files[index].img}}" wx:key="*this">
-              <view class="" bindtap="previewImage" bindlongpress="replaceImage" data-value="{{item}}" id="{{index}}">
-                <image class="box_img" src="{{item}}" mode="aspectFill" />
+            <block wx:for="{{files[index].img}}" wx:for-item="image" wx:key="*this">
+              <view class="" bindtap="previewImage" bindlongpress="replaceImage" data-value="{{image}}" data-index="{{index}}" data-id="{{item.id}}">
+                <image class="box_img" src="{{image}}" mode="aspectFill" />
               </view>
             </block>
             <view class="box">
