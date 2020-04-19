@@ -71,54 +71,49 @@ Page({
     let commentList = this.data.commentList
     var that = this;
     wx.chooseImage({
-      count: 3,
+      count: 1,
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         for (let item of commentList) {
-          //先预存原本img 如果超过三张重定义
           if (item.id == id) {
-            for (let a of res.tempFilePaths) {
-              //设置图片
-              item.img.push(a)
-            }
-            //先判断 files 是否长度为 3
-            if (item.img.length > 3) {
-              wx.showToast({
-                title: '最多只能三张',
-              })
-              //若长度超过 3张 则重定义
-              item.img.length = 3
-            }
-            //上传图片
-            for (let i=0;i<item.img.length;i++) {
-              console.log(item.img[i])
-              wx.uploadFile({
-                url: uploadImg,
-                header: {
-                  'content-type': 'multipart/form-data'
-                },
-                filePath: item.img[i],
-                name: 'commentImg',
-                success: res => {
-                  console.log(res)
-                  const data = res.data
-                  if (res.data) {
-                    console.log('移动成功')
-                    item.img[i] = res.data
-                    console.log(item.img[i])
-                  } else {
-                    console.log('移动失败')
-                  }
+              //上传
+              for (let a of res.tempFilePaths) {
+                //判断 长度 是否超过 3
+                if ((item.img.length + res.tempFilePaths.length) > 3) {
+                  wx.showToast({
+                    title: '最多只能为三张'
+                  })
+                  break;
                 }
-              })
+                //若是不超过3张则先添加，因为存入服务器有延迟
+                item.img.push(a)
+                wx.uploadFile({
+                  url: uploadImg,
+                  header: {
+                    'content-type': 'multipart/form-data'
+                  },
+                  filePath: a,
+                  name: 'commentImg',
+                  success: res => {
+                    console.log(res)
+                    if (res.data) {
+                      console.log('移动成功')
+                      //移动成功 则将路径放入 item.img中
+                      //先将提前存入取出，随后将存入服务器的放入
+                      item.img.pop()
+                      item.img.push(headURL + res.data)                  
+                    } else {
+                      console.log('移动失败')
+                    }
+                  }
+                })
+              }
+              that.setData({
+                commentList: commentList
+              });
             }
-          }
-          console.log(commentList)
-          that.setData({
-            commentList: commentList
-          });
         }
       },
       fail: err => {
