@@ -54,14 +54,37 @@ Page({
       success: res => {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         //重新覆盖地址
-        for (let item of commentList) {
-          if (item.id == id) {
-            item.img[index] = res.tempFilePaths
-          }
-        }
-        this.setData({
-          commentList: commentList
-        });
+        //先将图片上传 然后重新覆盖
+          wx.uploadFile({
+            url: uploadImg,
+            header: {
+              'content-type': 'multipart/form-data'
+            },
+            filePath: res.tempFilePaths[0],
+            name: 'commentImg',
+            success: res => {
+              console.log(res)
+              if (res.data) {
+                console.log('移动成功')
+                //移动成功 则将路径放入 item.img中
+                //先将提前存入取出，随后将存入服务器的放入
+                for (let item of commentList) {
+                  if (item.id == id) {
+                    item.img[index] = headURL + res.data
+                  }
+                }     
+                this.setData({
+                  commentList: commentList
+                });           
+              } else {
+                console.log('移动失败')
+              }
+            }
+          })
+
+
+
+
       }
     })
   },
