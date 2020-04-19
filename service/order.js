@@ -44,3 +44,10 @@ export function signOrder(data) {
     data: data
   })
 }
+
+export function addComment(data) {
+  return request({
+    url: '/api/addComment',
+    data: data
+  })
+}

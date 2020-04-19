@@ -3,6 +3,7 @@ import {
 } from './config.js';
 
 export const headURL = baseURL + '/upload/';
+export const uploadImg = baseURL + '/api/uploadImg';
 
 //验证手机号码
 export function checkPhone(phone){
