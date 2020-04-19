@@ -17,7 +17,7 @@ Page({
     orderList: {},
     goodList: {},
     cargoList: {},
-    commentList: [],
+    commentList: {},
     radioItem: [{
         name: 1,
         value: 1
@@ -55,36 +55,32 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         //重新覆盖地址
         //先将图片上传 然后重新覆盖
-          wx.uploadFile({
-            url: uploadImg,
-            header: {
-              'content-type': 'multipart/form-data'
-            },
-            filePath: res.tempFilePaths[0],
-            name: 'commentImg',
-            success: res => {
-              console.log(res)
-              if (res.data) {
-                console.log('移动成功')
-                //移动成功 则将路径放入 item.img中
-                //先将提前存入取出，随后将存入服务器的放入
-                for (let item of commentList) {
-                  if (item.id == id) {
-                    item.img[index] = headURL + res.data
-                  }
-                }     
-                this.setData({
-                  commentList: commentList
-                });           
-              } else {
-                console.log('移动失败')
+        wx.uploadFile({
+          url: uploadImg,
+          header: {
+            'content-type': 'multipart/form-data'
+          },
+          filePath: res.tempFilePaths[0],
+          name: 'commentImg',
+          success: res => {
+
+            if (res.data) {
+              console.log('移动成功')
+              //移动成功 则将路径放入 item.img中
+              //先将提前存入取出，随后将存入服务器的放入
+              for (let item of commentList) {
+                if (item.id == id) {
+                  item.img[index] = headURL + res.data
+                }
               }
+              this.setData({
+                commentList: commentList
+              });
+            } else {
+              console.log('移动失败')
             }
-          })
-
-
-
-
+          }
+        })
       }
     })
   },
@@ -101,42 +97,41 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         for (let item of commentList) {
           if (item.id == id) {
-              //上传
-              for (let a of res.tempFilePaths) {
-                //判断 长度 是否超过 3
-                if ((item.img.length + res.tempFilePaths.length) > 3) {
-                  wx.showToast({
-                    title: '最多只能为三张'
-                  })
-                  break;
-                }
-                //若是不超过3张则先添加，因为存入服务器有延迟
-                item.img.push(a)
-                wx.uploadFile({
-                  url: uploadImg,
-                  header: {
-                    'content-type': 'multipart/form-data'
-                  },
-                  filePath: a,
-                  name: 'commentImg',
-                  success: res => {
-                    console.log(res)
-                    if (res.data) {
-                      console.log('移动成功')
-                      //移动成功 则将路径放入 item.img中
-                      //先将提前存入取出，随后将存入服务器的放入
-                      item.img.pop()
-                      item.img.push(headURL + res.data)                  
-                    } else {
-                      console.log('移动失败')
-                    }
-                  }
+            //上传
+            for (let a of res.tempFilePaths) {
+              //判断 长度 是否超过 3
+              if ((item.img.length + res.tempFilePaths.length) > 3) {
+                wx.showToast({
+                  title: '最多只能为三张'
                 })
+                break;
               }
-              that.setData({
-                commentList: commentList
-              });
+              //若是不超过3张则先添加，因为存入服务器有延迟
+              item.img.push(a)
+              wx.uploadFile({
+                url: uploadImg,
+                header: {
+                  'content-type': 'multipart/form-data'
+                },
+                filePath: a,
+                name: 'commentImg',
+                success: res => {
+                  if (res.data) {
+                    console.log('移动成功')
+                    //移动成功 则将路径放入 item.img中
+                    //先将提前存入取出，随后将存入服务器的放入
+                    item.img.pop()
+                    item.img.push(headURL + res.data)
+                  } else {
+                    console.log('移动失败')
+                  }
+                }
+              })
             }
+            that.setData({
+              commentList: commentList
+            });
+          }
         }
       },
       fail: err => {

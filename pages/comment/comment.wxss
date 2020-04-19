@@ -1,0 +1,42 @@
+/* pages/comment/comment.wxss */
+.title{
+  height: 80rpx;
+  border-radius: 10%;
+  background: #F5F5DC;
+  color: black;
+  font-size:40rpx;
+  font-weight: 600;
+  margin: 20rpx 30rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.main02{
+  background: #F5F5F5;
+  margin: 0 10rpx;
+  border-radius: 2%;
+}
+.main03{
+  margin: 10rpx 20rpx;
+  background: #DCDCDC;
+  padding: 8rpx 10rpx;
+  border-radius: 2%;
+  display: flex;
+}
+.up{
+  font-size: 35rpx;
+  font-weight: 600;
+  color:black;
+  text-align: center;
+  margin: 14rpx 0;
+}
+.image{
+  width: 240rpx;
+  height: 240rpx;
+  border-radius: 10%;
+}
+.desc{
+  margin: 6rpx 30rpx;
+}
+.desc03{
+  text-overflow:ellipsis
+}
