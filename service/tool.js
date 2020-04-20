@@ -4,6 +4,7 @@ import {
 
 export const headURL = baseURL + '/upload/';
 export const uploadImg = baseURL + '/api/uploadImg';
+export const decode = baseURL + '/api/decode';
 
 //验证手机号码
 export function checkPhone(phone){

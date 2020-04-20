@@ -1,5 +1,5 @@
 <view class="login-container">
-	<view class="login" wx:if="{{!hasUserInfo && canIUse }}">
+	<view class="login" wx:if="{{!logged}}">
 		<view class="app-info">
 			<image class="app-logo" src="http://placekitten.com/64/64" />
 			<text class="app-name">预订商城</text>
@@ -13,7 +13,7 @@
 		<button class="weui-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">确认登录</button>
 	</view>
 	<view class="logged" wx:else>
-		<image class="logged-icon" src="{{userInfo.avatar}}" />
+		<image class="logged-icon" src="{{headURL + userInfo.avatar}}" />
      <view class="logged-text">{{userInfo.username}}</view>
 		<view class="logged-text">近期你已经授权登陆过小商城测试</view>
 		<view class="logged-text">自动登录中</view>
