@@ -3,14 +3,17 @@
   <view class="title">我的评论</view>
   <scroll-view scroll-y>
     <view class="main01">
-      <view wx:for="{{orderList}}" wx:key="{{index}}"class="main02" >
+      <view wx:for="{{orderList}}" wx:key="{{index}}" class="main02" >
         <view class="up">订单号：{{item.orderNum}}</view>
         <view wx:for="{{item.main}}" wx:for-item="item01" wx:key="{{index}}" class="main03">
           <view >
             <image class="image" src="{{headURL + item01.img[0]}}" />
           </view>
           <view class="desc">
-            <view>商品名: {{item01.title}} </view>
+            <view>
+              商品名: {{item01.title}} 
+              <image class="image01"  src="../../assets/images/comment/right.png" data-orderId="{{item01.orderId}}" bind:tap="clickItem" />
+            </view>
             <view>商品评分: {{item01.star}}</view>
             <view class="desc03">商品评论: {{item01.description}}</view>
           </view>

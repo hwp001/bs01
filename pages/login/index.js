@@ -21,7 +21,6 @@ Page({
   onLoad: function () {
     //登录态 存在则更新 增加信息
     this.updateUserInfo()
-    //
     const logged = wx.getStorageSync('logged');
     console.log(logged)
     if(logged){
@@ -70,19 +69,19 @@ Page({
                 data: { encryptedData: res.encryptedData, iv: res.iv, code: code },
                 success: res => {
                   console.log('11111', res)
-
                   //4.解密成功后 获取自己服务器返回的结果 并保存到本地
-                  if (res.data.status == 1) {
-                    var userInfo_ = res.data.userInfo;
+                  console.log(res.data.statu)
+                  if (res.data.statu == 1) {
+                    var userInfo_ = res.data.userInfo[0];
                     console.log(userInfo_)
                     app.globalData.userInfo = userInfo_
-                    console.log(app.globalData.userInfo)
+                    console.log('--------',app.globalData.userInfo)
                     this.setData({
                       userInfo: userInfo_,
                       hasUserInfo: true,
                     })
                     wx.setStorageSync('logged', true)
-                    wx.setStorageSync('openId', userInfo_.openId)
+                    wx.setStorageSync('openId', userInfo_.wx_openid)
                     //跳转页面
                     //跳转到主页
                     wx.switchTab({
@@ -90,8 +89,10 @@ Page({
                     })
                   } else {
                     console.log('解密失败')
+                    wx.showToast({
+                      title: res.data.err,
+                    })
                   }
-
                 },
                 fail: function () {
                   console.log('系统错误')
@@ -116,28 +117,31 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true,
       })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true,
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true,
-          })
-        },
-      })
-
     }
+    //防止私自获取向微信服务器获取信息
+    // } else if (this.data.canIUse) {
+    //   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+    //   // 所以此处加入 callback 以防止这种情况
+    //   app.userInfoReadyCallback = res => {
+    //     this.setData({
+    //       userInfo: res.userInfo,
+    //       hasUserInfo: true,
+    //     })
+    //   }
+    // } 
+    // else {
+    //   // 在没有 open-type=getUserInfo 版本的兼容处理
+    //   wx.getUserInfo({
+    //     success: res => {
+    //       app.globalData.userInfo = res.userInfo
+    //       this.setData({
+    //         userInfo: res.userInfo,
+    //         hasUserInfo: true,
+    //       })
+    //     },
+    //   })
+
+    // }
 
   },
 

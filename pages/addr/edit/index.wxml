@@ -43,7 +43,7 @@
             <view class="weui-cells__title">
                 详细地址
                 <view class="icon_success" bindtap="chooseLocation">
-                    <icon type="success" size="23"></icon>
+<image class="image" src="../../../assets/common/addr.png" />
                 </view>
             </view>
             <view class="weui-cells weui-cells_after-title">

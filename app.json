@@ -10,14 +10,15 @@
     "pages/home/home",
     "pages/category/category",
     "pages/cart/cart",
-    "pages/profile/profile",
+    "pages/profile/home/profile",
     "pages/index/index",
     "pages/logs/logs",
     "pages/addr/list/index",
     "pages/addr/edit/index",
     "pages/order/list/order",
     "pages/order/detail/order",
-    "pages/order/comment/order"
+    "pages/order/comment/order",
+    "pages/profile/edit/profile"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -46,7 +47,7 @@
         "selectedIconPath": "assets/images/tabbar/cart_active.png"
       },
       {
-        "pagePath": "pages/profile/profile",
+        "pagePath": "pages/profile/home/profile",
         "text": "个人中心",
         "iconPath": "assets/images/tabbar/profile.png",
         "selectedIconPath": "assets/images/tabbar/profile_active.png"

@@ -29,6 +29,11 @@ Page({
         })
       }
     })
+  },
+  clickItem(e){
+    wx.showToast({
+      title: '功能暂未开通',
+    })
   }
 
 })

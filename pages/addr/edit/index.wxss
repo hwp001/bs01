@@ -1,3 +1,7 @@
 .icon_success{
   float: right;
 }
+.image{
+  width: 40rpx;
+  height: 40rpx;
+}
