@@ -1,10 +1,10 @@
 // pages/comment/comment.js
 import {
   headURL
-} from '../../service/tool.js'
+} from '../../../service/tool.js'
 import {
   getCommentById
-} from '../../service/comment.js'
+} from '../../../service/comment.js'
 Page({
 
   /**
@@ -31,9 +31,11 @@ Page({
     })
   },
   clickItem(e){
+    console.log(e)
+    const id = e.currentTarget.dataset.id
+    console.log(id)
     wx.showToast({
       title: '功能暂未开通',
     })
   }
-
 })

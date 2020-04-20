@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/comment/comment",
+    "pages/comment/home/comment",
     "pages/addr/add/index",
     "pages/login/index",
     "pages/help/help",
@@ -18,7 +18,8 @@
     "pages/order/list/order",
     "pages/order/detail/order",
     "pages/order/comment/order",
-    "pages/profile/edit/profile"
+    "pages/profile/edit/profile",
+    "pages/comment/detail/profile"
   ],
   "window": {
     "backgroundTextStyle": "light",

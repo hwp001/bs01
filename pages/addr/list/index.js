@@ -58,9 +58,10 @@ Page({
     wx.showModal({
       title: '提示',
       content: '确定要删除此快递地址',
-      success(res) {
+      success:res => {
         if (res.confirm) {
           delCargoById({id:id}).then(res => {
+            console.log(res)
             if (res.statu == 1) {
               wx.showToast({
                 title: '删除成功',
@@ -72,7 +73,7 @@ Page({
               },1000)
             } else {
               wx.showToast({
-                title: '删除失败',
+                title: res.err,
               })
             }
           })
@@ -80,6 +81,11 @@ Page({
           console.log('用户点击取消')
         }
       }
+    })
+  },
+  backHome(){
+    wx.reLaunch({
+      url: '/pages/home/home',
     })
   }
 });

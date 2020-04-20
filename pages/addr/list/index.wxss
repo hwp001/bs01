@@ -29,3 +29,8 @@
 .del{
   color:red
 }
+.image{
+  width: 40rpx;
+  height: 40rpx;
+  float: right;
+}

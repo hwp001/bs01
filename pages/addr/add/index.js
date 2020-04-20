@@ -3,7 +3,8 @@ import {
 } from '../../../service/address.js'
 import {
   checkPhone,
-  checkName
+  checkName,
+  checkAddress,
 } from '../../../service/tool.js'
 
 const App = getApp();

@@ -1,5 +1,5 @@
 // pages/profile/profile.js
-const App = getApp();
+const app = getApp();
 Page({
 
   /**
@@ -9,7 +9,7 @@ Page({
     orderList: [
       { icon: 'cart.png', info: '我的购物车', addr:'/pages/cart/cart' },
       { icon: 'app.png', info: '我的订单', addr: '/pages/order/list/order' },
-      { icon: 'vip.png', info: '我的评论', addr: '/pages/comment/comment' },
+      { icon: 'vip.png', info: '我的评论', addr: '/pages/comment/home/comment' },
       { icon: 'shouhuodizhi.png', info: '收货地址', addr: '/pages/addr/list/index' },
     ],
     serviceList: [
@@ -23,7 +23,7 @@ Page({
     }
   },
   onLoad(){
-    const userInfo = App.globalData.userInfo
+    const userInfo = app.globalData.userInfo
     if (userInfo){
       this.setData({
         userInfo: userInfo
@@ -33,5 +33,5 @@ Page({
         title: '用户未登录',
       })
     }
-  }
+  },
 })

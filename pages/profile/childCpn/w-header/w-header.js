@@ -21,6 +21,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    edit(){
+      wx.navigateTo({
+        url: '/pages/profile/edit/profile'
+      })
+    }
   }
 })

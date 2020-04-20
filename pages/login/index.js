@@ -12,7 +12,6 @@ Page({
   data: {
     userInfo: {},
     logged: false,
-    headURL: headURL
   },
   //事件处理函数
   bindViewTap: function () {
@@ -53,7 +52,8 @@ Page({
                 success: res => {
                   //4.解密成功后 获取自己服务器返回的结果 并保存到本地
                   if (res.data.statu == 1) {
-                    var userInfo_ = res.data.userInfo[0];
+                    let userInfo_ = res.data.userInfo[0];
+                    userInfo_.avatar = headURL + userInfo_.avatar
                     app.globalData.userInfo = userInfo_
                     this.setData({
                       userInfo: userInfo_,
@@ -104,9 +104,11 @@ Page({
       loggedUserInfo({openId:openId}).then(res => {
         console.log(333,res)
         if (res.statu == 1) {
-          app.globalData.userInfo = res.userInfo[0]
+          const userInfo = res.userInfo[0]
+          userInfo.avatar = headURL + userInfo.avatar
+          app.globalData.userInfo = userInfo
           this.setData({
-            userInfo: res.userInfo[0],
+            userInfo: userInfo,
             logged: logged
           })
           //界面跳转

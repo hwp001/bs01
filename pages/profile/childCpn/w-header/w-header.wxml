@@ -7,10 +7,10 @@
         <view class='login'>{{userInfo.username}}</view>
         <view class='phone'>
             <image src="/assets/images/profile/phone.png" />
-            暂无绑定手机号
+            {{(userInfo.phone == "") ? '暂无绑定手机号': userInfo.phone}}
         </view>
     </view>
-    <view class='arrow'>
+    <view class='arrow' bind:tap="edit">
         <image src="/assets/images/common/arrow-right.png" />
     </view>
 </view>

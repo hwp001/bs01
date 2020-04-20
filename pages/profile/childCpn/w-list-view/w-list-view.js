@@ -35,18 +35,7 @@ Component({
             console.log('联系客服失败')
           }
         })
-      } else if(addr == '1') {
-        wx.clearStorage({
-          success:res => {
-            wx.showToast({
-              title: '清除缓存成功',
-            })
-          },
-          fail: res => {
-            console.log('清除缓存失败')
-          }
-        })
-      } else if(addr == '/pages/cart/cart') {
+      }else if(addr == '/pages/cart/cart') {
         wx.switchTab({
           url: addr,
         })

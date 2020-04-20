@@ -1,1 +1,17 @@
 /* pages/profile/edit/profile.wxss */
+
+.title{
+    height: 80rpx;
+    border-radius: 10%;
+    background: #F5F5DC;
+    color: black;
+    font-size:40rpx;
+    font-weight: 600;
+    margin: 20rpx 30rpx;
+    line-height: 80rpx;
+    text-align: center;
+  }
+
+  .main{
+      margin-top: 60rpx;
+  }
