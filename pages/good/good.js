@@ -29,6 +29,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     const goodId = { goodId: options.goodId} 
     this._getDetail(goodId);
     this._getData();
@@ -37,6 +38,7 @@ Page({
   //获取商品数据
   _getDetail(goodId){
     getDetail(goodId).then(res => {
+      console.log(res)
       //获取商品基本信息
       const goodDetail = res.goodDetail.map(item => {
         for (var i = 0; i < item.img.length; i++) {

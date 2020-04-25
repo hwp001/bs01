@@ -1,4 +1,7 @@
 // components/w-good-search/w-good-search.js
+import {
+  searchGood
+} from '../../service/home.js'
 Component({
   /**
    * 组件的属性列表
@@ -11,7 +14,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    inputShowed: false,
+    inputVal: "",
   },
 
   /**
@@ -39,6 +43,30 @@ Component({
       this.setData({
         inputVal: e.detail.value
       });
+    },
+    searchItem(e){
+      const value = this.data.inputVal
+      //首先判断输入是否为空
+      if (value.length > 0) {
+        searchGood({ value: value }).then(res => {
+          console.log(res)
+          if (res.statu == 1) {
+            const goodId = res.data
+            wx.navigateTo({
+              url: '/pages/good/good?goodId=' + goodId,
+            })
+          } else {
+            wx.showToast({
+              title: res.err,
+            })
+          }
+        })
+      } else {
+        wx.showToast({
+          title: '请输入关键字',
+        })
+      }
+
     }
   }
 })

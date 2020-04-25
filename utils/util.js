@@ -17,3 +17,11 @@ const formatNumber = n => {
 module.exports = {
   formatTime: formatTime
 }
+
+
+export const dateTime = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return [year, month, day].map(formatNumber).join('/')
+}

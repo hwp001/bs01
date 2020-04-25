@@ -9,6 +9,7 @@ import {
   checkPhone,
   checkName
 } from '../../../service/tool.js'
+var util = require('../../../utils/util.js')
 const app = getApp()
 Page({
   /**
@@ -25,8 +26,9 @@ Page({
       {value:0,name:"送货上门"}
     ],
     payWay:[
-      {value:1,name:"微信支付",checked:true},
-      { value: 0, name: "支付宝支付" }
+      { value: 0, name: "微信支付",checked:true},
+      { value: 1, name: "支付宝支付" },
+      { value: 2, name: "扫码支付"}
     ],
     gainStatu: true,
     date: "2020-04-15",

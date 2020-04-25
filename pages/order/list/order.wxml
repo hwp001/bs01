@@ -43,7 +43,7 @@
                 <view wx:if="{{statu}}" class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" bind:tap="delItem" data-id="{{item.id}}">
                   取消            
                 </view>
-                  <navigator url="{{'/pages/order/detail/order?id=' + item.id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">详情</navigator>
+                  <navigator wx:if="{{confirm}}" url="{{'/pages/order/detail/order?id=' + item.id}}" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">详情</navigator>
               </view>
           </view>
   </view>

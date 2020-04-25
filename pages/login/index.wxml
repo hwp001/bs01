@@ -1,8 +1,8 @@
 <view class="login-container">
 	<view class="login" wx:if="{{!logged}}">
 		<view class="app-info">
-			<image class="app-logo" src="http://placekitten.com/64/64" />
-			<text class="app-name">预订商城</text>
+			<image class="app-logo" src="../../assets/common/main.jpg" />
+			<text class="app-name">预订商城平台</text>
 		</view>
 		<view class="alert">
 			<view class="alert-title">网页由该小程序开发，请确认授权以下信息</view>

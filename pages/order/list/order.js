@@ -5,9 +5,10 @@ import {
 } from "../../../service/order.js"
 Page({
   data: {
-    titles: ['未签收','已签收','已取消'],
+    titles: ['未签收','已签收','已取消','审核中'],
     index: 0,
     statu: true,
+    confirm: true,
     allOrder: []
   },
   onLoad(){
@@ -33,12 +34,17 @@ Page({
   tabclick(e){
     const index = e.detail.index
     let statu = true
-    if (index == 1) {
+    let confirm = true
+    if (index == 1 || index == 3) {
       statu = false
+    }
+    if (index == 3){
+      confirm = false
     }
     this.setData({
       index: index,
-      statu: statu
+      statu: statu,
+      confirm: confirm
     })
   },
   delItem(e){

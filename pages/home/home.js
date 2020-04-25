@@ -13,8 +13,6 @@ const types = ['pop', 'new', 'sell'];
 Page({
   data: {
     showBackTop: false,
-    inputShowed: false,
-    inputVal: "",
     imageList: [],
     recommandList: [],
     currentIndex: 0,

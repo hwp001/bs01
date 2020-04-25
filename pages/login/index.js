@@ -50,6 +50,7 @@ Page({
                 },
                 data: { encryptedData: res.encryptedData, iv: res.iv, code: code },
                 success: res => {
+                  console.log(res)
                   //4.解密成功后 获取自己服务器返回的结果 并保存到本地
                   if (res.data.statu == 1) {
                     let userInfo_ = res.data.userInfo[0];

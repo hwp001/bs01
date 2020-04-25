@@ -15,3 +15,9 @@ export function getData()
     url: '/api/multiData'
   });
 }
+export function searchGood(data) {
+  return request({
+    url: '/api/searchGood',
+    data: data
+  })
+}

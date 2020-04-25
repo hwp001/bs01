@@ -1,2 +1,2 @@
 export const baseURL = 'http://bs01.test'; 
-export const timeout = 3000; 
+export const timeout = 5000; 
