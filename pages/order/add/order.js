@@ -133,6 +133,9 @@ Page({
               wx.showToast({
                 title: '新增订单成功',
               })
+              //弹出购物车最后一个
+              app.globalData.cartList.pop();
+              //若是新增订单成功，则需要弹出购物车
               setTimeout(function () {
                 wx.reLaunch({
                   url: '/pages/order/list/order',

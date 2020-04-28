@@ -19,7 +19,7 @@ Component({
   methods: {
     clickItem() {
       wx.switchTab({
-        url: '/pages/cart/cart',
+        url: '/pages/profile/home/profile',
       })
     }
   }

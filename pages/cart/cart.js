@@ -120,8 +120,7 @@ Page({
     obj.totalCounter = this.data.totalCounter
     obj.totalPrice = this.data.totalPrice
     app.globalData.orderList.push(obj)
-    //将此订单对象加入全局对象
-
+      //将此订单对象加入全局对象
       //下单后 购物车只剩下没勾选
       this.setData({
         cartList: cartListP
