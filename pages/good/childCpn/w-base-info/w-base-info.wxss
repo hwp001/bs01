@@ -21,3 +21,7 @@
     color: #939393;
     line-height: 22px;
 }
+
+.baseInfo .count{
+    
+}

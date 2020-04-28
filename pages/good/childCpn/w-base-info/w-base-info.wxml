@@ -1,6 +1,11 @@
-<!--pages/good/childCpn/w-base-info/w-base-info.wxml-->
-    <view class="baseInfo">
-        <view class="title">{{ baseInfo.title }}</view>
-        <view class="price">¥ {{ baseInfo.price }}</view> 
-        <text class="desc">{{ baseInfo.desc }}</text>
+<!-- pages/good/childCpn/w-base-info/w-base-info.wxml -->
+<view class="baseInfo">
+    <view>
+        <view class="title">
+            {{ baseInfo.title }}
+            <text class="count">x{{ baseInfo.count }}</text>
+        </view>
     </view>
+    <view class="price">¥ {{ baseInfo.price }}</view>
+    <text class="desc">{{ baseInfo.desc }}</text>
+</view>
