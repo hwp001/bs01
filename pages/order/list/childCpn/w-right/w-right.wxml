@@ -1,4 +1,4 @@
 <!--pages/good/childCpn/w-bottom-right/w-bottom-right.wxml-->
 <view class="cart" bind:tap="clickItem">
-  <image src="/assets/images/profile/cart.png" />
+  <image src="/assets/images/tabbar/home_active.png" />
 </view>

@@ -24,11 +24,11 @@
     <view class="label">
       <view class="group">
         <label>收货姓名：</label>
-        {{cargoList.name}}
+       <label class="name">{{cargoList.name}}</label>
       </view>
       <view class="group">
         <label>收货号码：</label>
-        {{cargoList.phone}}
+        <label class="phone"> {{cargoList.phone}} </label>
       </view>
       <view class="group">收货地址： {{cargoList.address}}</view>
     </view>

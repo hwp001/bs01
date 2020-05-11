@@ -1,7 +1,6 @@
 // pages/profile/profile.js
 const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -22,7 +21,7 @@ Page({
       nickname: '未登录'
     }
   },
-  onLoad(){
+  onShow(){
     const userInfo = app.globalData.userInfo
     if (userInfo){
       this.setData({

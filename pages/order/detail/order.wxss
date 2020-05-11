@@ -38,3 +38,10 @@
 .radio{
   
 }
+
+.name{
+  margin-right: 430rpx;
+}
+.phone{
+  margin-right: 261rpx;
+}

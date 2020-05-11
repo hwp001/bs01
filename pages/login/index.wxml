@@ -11,6 +11,7 @@
 			</view>
 		</view>
 		<button class="weui-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">确认登录</button>
+
 	</view>
 	<view class="logged" wx:else>
 		<image class="logged-icon" src="{{userInfo.avatar}}" />
